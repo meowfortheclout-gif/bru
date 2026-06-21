@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will You Be My Valentine? ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff5e8a,#ff8fab,#ffc2d1);
+}
+
+.card{
+    background:white;
+    width:450px;
+    max-width:90%;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+h1{
+    color:#ff3366;
+    margin-bottom:15px;
+}
+
+p{
+    color:#555;
+    margin-bottom:20px;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:25px;
+    font-size:18px;
+    cursor:pointer;
+    margin:10px;
+}
+
+.yes{
+    background:#ff3366;
+    color:white;
+}
+
+.no{
+    background:#777;
+    color:white;
+}
+
+#lovePage{
+    display:none;
+}
+
+img{
+    width:250px;
+    height:250px;
+    object-fit:cover;
+    border-radius:15px;
+    margin-bottom:20px;
+}
+</style>
+</head>
+<body>
+
+<div class="card" id="questionPage">
+    <h1>❤️ Will You Be My Valentine? ❤️</h1>
+    <p>You make my days brighter. 💕</p>
+
+    <button class="yes" onclick="showLovePage()">Yes 💖</button>
+    <button class="no" onclick="showNoMessage()">No 😢</button>
+</div>
+
+<div class="card" id="lovePage">
+    <img src="myphoto.jpg" alt="Valentine">
+
+    <h1>💖 Thank You For Saying Yes! 💖</h1>
+
+    <p>
+        Happy Valentine's Day! 🌹<br><br>
+        Thank you for being part of my life.
+        You make every moment special. ❤️
+    </p>
+</div>
+
+<script>
+function showLovePage(){
+    document.getElementById("questionPage").style.display = "none";
+    document.getElementById("lovePage").style.display = "block";
+}
+
+function showNoMessage(){
+    alert("Aww 😢, but thank you for being honest.");
+}
+</script>
+
+</body>
+</html>
