@@ -10,7 +10,7 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    font-family:'Segoe UI',sans-serif;
 }
 
 body{
@@ -18,21 +18,21 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    background:linear-gradient(135deg,#ff5e8a,#ff8fab,#ffc2d1);
+    background:linear-gradient(135deg,#ff4d6d,#ff8fa3,#ffc2d1);
+    overflow:hidden;
 }
 
-.card{
+.container{
     background:white;
     width:450px;
-    max-width:90%;
     padding:40px;
-    border-radius:20px;
+    border-radius:25px;
     text-align:center;
-    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
 }
 
 h1{
-    color:#ff3366;
+    color:#ff4d6d;
     margin-bottom:15px;
 }
 
@@ -41,23 +41,34 @@ p{
     margin-bottom:20px;
 }
 
-button{
-    padding:12px 25px;
-    border:none;
-    border-radius:25px;
-    font-size:18px;
-    cursor:pointer;
-    margin:10px;
+.buttons{
+    position:relative;
+    height:120px;
 }
 
-.yes{
-    background:#ff3366;
+button{
+    padding:12px 28px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:18px;
+    transition:.3s;
+}
+
+#yesBtn{
+    background:#ff4d6d;
     color:white;
 }
 
-.no{
+#yesBtn:hover{
+    transform:scale(1.08);
+}
+
+#noBtn{
     background:#777;
     color:white;
+    position:absolute;
+    left:230px;
 }
 
 #lovePage{
@@ -70,39 +81,59 @@ img{
     object-fit:cover;
     border-radius:15px;
     margin-bottom:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
 }
 </style>
 </head>
 <body>
 
-<div class="card" id="questionPage">
+<!-- PAGE 1 -->
+<div class="container" id="questionPage">
     <h1>❤️ Will You Be My Valentine? ❤️</h1>
-    <p>You make my days brighter. 💕</p>
+    <p>You only have one correct answer. 😘</p>
 
-    <button class="yes" onclick="showLovePage()">Yes 💖</button>
-    <button class="no" onclick="showNoMessage()">No 😢</button>
+    <div class="buttons">
+        <button id="yesBtn" onclick="showLovePage()">Yes 💖</button>
+        <button id="noBtn" onmouseover="moveButton()">No 😢</button>
+    </div>
 </div>
 
-<div class="card" id="lovePage">
-    <img src="myphoto.jpg" alt="Valentine">
+<!-- PAGE 2 -->
+<div class="container" id="lovePage">
+    <img src="spiderman marvel studios_.jpg" alt="Valentine">
 
     <h1>💖 Thank You For Saying Yes! 💖</h1>
 
     <p>
-        Happy Valentine's Day! 🌹<br><br>
-        Thank you for being part of my life.
-        You make every moment special. ❤️
+        Happy Valentine's Day! ❤️<br><br>
+        You make my world brighter every day. 🌹<br>
+        Thank you for being amazing. 💕
     </p>
 </div>
 
 <script>
+let tries = 0;
+
+function moveButton(){
+    tries++;
+
+    const noBtn = document.getElementById("noBtn");
+
+    if(tries >= 3){
+        noBtn.style.display = "none";
+        return;
+    }
+
+    let x = Math.random() * 250;
+    let y = Math.random() * 80;
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+}
+
 function showLovePage(){
     document.getElementById("questionPage").style.display = "none";
     document.getElementById("lovePage").style.display = "block";
-}
-
-function showNoMessage(){
-    alert("Aww 😢, but thank you for being honest.");
 }
 </script>
 
